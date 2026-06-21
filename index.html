@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pick My Place</title>
+    <meta
+      name="description"
+      content="Pick My Place ranks curated destinations from your hobbies, budget, climate, mood, and regions—runs in your browser with saved picks and a random Surprise me option."
+    />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content="Pick My Place" />
+    <meta
+      property="og:description"
+      content="Ranked travel ideas from your lifestyle preferences—saved picks, random draw, no sign-up. Try the matcher on the home page."
+    />
+    <meta property="og:type" content="website" />
+    <!-- Deploy: replace __PICKMYPLACE_SITE__ with your public origin (https://host or https://host/repo). No trailing slash. See DEPLOY.md -->
+    <link rel="canonical" href="__PICKMYPLACE_SITE__/index.html" />
+    <meta property="og:url" content="__PICKMYPLACE_SITE__/index.html" />
+    <meta property="og:image" content="__PICKMYPLACE_SITE__/favicon.svg" />
+    <meta property="og:image:alt" content="Pick My Place" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image" content="__PICKMYPLACE_SITE__/favicon.svg" />
+    <meta name="twitter:title" content="Pick My Place" />
+    <meta
+      name="twitter:description"
+      content="Ranked travel ideas from your lifestyle preferences—saved picks, random draw, no sign-up."
+    />
+    <meta name="theme-color" content="#0b7a75" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="app-header">
+        <span class="hero-chip">Smart Travel Matcher</span>
+        <h1>Pick My Place</h1>
+        <p>Get your best-ranked travel picks tailored to your lifestyle.</p>
+      </header>
+
+      <section class="panel">
+        <form id="vacay-form" class="vacay-form">
+          <div class="form-grid">
+            <div class="form-card form-card-wide">
+              <label for="hobbies">Hobbies & Interests</label>
+              <p class="field-hint">
+                List a few trip interests in everyday words (for example hiking, night markets, art museums). Words of
+                three or more letters match our destination tags best—short acronyms alone may not count.
+              </p>
+              <textarea
+                id="hobbies"
+                name="hobbies"
+                rows="4"
+                placeholder="Hiking, street food, art museums, live music..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-card">
+              <label for="budget">Budget Level</label>
+              <p class="field-hint">Pick a spending range that feels comfortable.</p>
+              <select id="budget" name="budget" required>
+                <option value="">Choose your budget</option>
+                <option value="very-low">Shoestring / backpacker</option>
+                <option value="low">Budget-friendly</option>
+                <option value="mid">Mid-range</option>
+                <option value="high">Premium</option>
+                <option value="very-high">Luxury</option>
+              </select>
+            </div>
+
+            <div class="form-card">
+              <label for="climate">Climate Preference</label>
+              <p class="field-hint">Choose the weather vibe you want.</p>
+              <select id="climate" name="climate" required>
+                <option value="">Choose a climate</option>
+                <option value="tropical">Tropical / humid</option>
+                <option value="warm">Warm / sunny</option>
+                <option value="temperate">Mild / temperate</option>
+                <option value="cool">Cool / crisp</option>
+                <option value="cold">Cold / snowy</option>
+              </select>
+            </div>
+
+            <div class="form-card">
+              <label for="mood">Travel Mood</label>
+              <p class="field-hint">Tell us how you want this trip to feel.</p>
+              <select id="mood" name="mood" required>
+                <option value="">Choose a mood</option>
+                <option value="relaxing">Relaxing / laid-back</option>
+                <option value="adventurous">Adventurous / active</option>
+                <option value="cultural">Cultural / historic</option>
+                <option value="romantic">Romantic / scenic</option>
+                <option value="luxury">Luxury / indulgent</option>
+              </select>
+            </div>
+
+            <div class="form-card form-card-wide">
+              <label for="regions">Preferred Regions</label>
+              <p class="field-hint">Add one or more regions you want to explore.</p>
+              <textarea
+                id="regions"
+                name="regions"
+                rows="2"
+                placeholder="Europe, Southeast Asia, Middle East..."
+              ></textarea>
+            </div>
+          </div>
+
+          <aside class="vibe-preview" id="vibePreview" aria-live="polite">
+            <p class="vibe-kicker">Your Trip Vibe</p>
+            <h3 id="vibeTitle">Dreaming up your perfect getaway...</h3>
+            <p id="vibeText">Pick your budget, climate, mood, and region to see your travel vibe come to life.</p>
+          </aside>
+
+          <div class="form-actions">
+            <button type="submit" id="submitBtn">Find My Place</button>
+            <button type="button" id="randomBtn" class="btn-secondary">
+              Surprise me — random place
+            </button>
+          </div>
+          <div class="action-row">
+            <a class="action-link" href="about.html">About This Project</a>
+          </div>
+          <p id="statusText" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
