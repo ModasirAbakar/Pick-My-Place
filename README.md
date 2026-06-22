@@ -47,6 +47,7 @@ There is no install or build step.
 | `about.html`   | How it works, creator, feature notes                    |
 | `styles.css`   | Shared styling                                        |
 | `favicon.svg`  | Tab icon                                              |
+| `images/cards/` | Local destination card art (SVG, no external CDN)   |
 | `docs/`        | README preview screenshots                            |
 | `DEPLOY.md`    | Replace `__PICKMYPLACE_SITE__`, Lighthouse, device QA |
 

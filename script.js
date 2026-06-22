@@ -67,9 +67,9 @@ function updateVibePreview() {
   vibePreview.classList.add("is-pulse");
 }
 
-/** Stable placeholder photos (Picsum) so cards always load offline-friendly */
-function destImage(id) {
-  return `https://picsum.photos/id/${id}/1200/800`;
+/** Card art shipped with the site (no external CDN — works on GitHub Pages and school networks). */
+function destImage(seed) {
+  return `images/cards/pmp-${seed}.svg`;
 }
 
 /** Curated destinations with rich tags for hobby + preference matching */

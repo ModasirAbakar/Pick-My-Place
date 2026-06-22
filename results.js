@@ -264,19 +264,43 @@ function applyResultsPageTheme(meta) {
   }
 }
 
-const FALLBACK_IMAGE = "https://picsum.photos/id/103/1200/800";
+const FALLBACK_IMAGE = "images/cards/pmp-default.svg";
 
-function getImageUrl(destination, providedImageUrl) {
-  if (providedImageUrl && !String(providedImageUrl).includes("source.unsplash.com")) {
-    return providedImageUrl;
+function localCardPath(seed) {
+  const n = Number(seed);
+  if (Number.isFinite(n) && n >= 29 && n <= 61) {
+    return `images/cards/pmp-${n}.svg`;
   }
-  const name = (destination || "travel").toLowerCase();
+  return FALLBACK_IMAGE;
+}
+
+function localCardPathForDestination(destination) {
+  const name = String(destination || "travel").toLowerCase();
   let hash = 0;
   for (let i = 0; i < name.length; i += 1) {
     hash = (hash + name.charCodeAt(i) * (i + 1)) % 1000;
   }
-  const id = 10 + (hash % 90);
-  return `https://picsum.photos/id/${id}/1200/800`;
+  const seed = 29 + (hash % 33);
+  return localCardPath(seed);
+}
+
+function getImageUrl(destination, providedImageUrl) {
+  const url = providedImageUrl ? String(providedImageUrl) : "";
+  if (url.includes("images/cards/pmp-")) {
+    return url;
+  }
+  const legacyId = url.match(/picsum\.photos\/(?:id|seed\/pmp-)(\d+)/);
+  if (legacyId) {
+    return localCardPath(legacyId[1]);
+  }
+  if (url && !url.includes("source.unsplash.com") && !url.includes("picsum.photos")) {
+    return url;
+  }
+  return localCardPathForDestination(destination);
+}
+
+function cardImageOnErrorAttr() {
+  return `this.onerror=null;this.src='${FALLBACK_IMAGE}'`;
 }
 
 function renderPickCard(item, { showRemove }) {
@@ -300,7 +324,7 @@ function renderPickCard(item, { showRemove }) {
 
   return `
     <article class="card">
-      <img class="card-image" src="${imageUrl}" alt="${destination}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'" />
+      <img class="card-image" src="${imageUrl}" alt="${destination}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="${cardImageOnErrorAttr()}" />
       <div class="card-top">
         <h3>${destination}</h3>
       </div>
@@ -372,7 +396,7 @@ function renderResults(destinations) {
 
       return `
         <article class="card">
-          <img class="card-image" src="${imageUrl}" alt="${destination}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='${FALLBACK_IMAGE}'" />
+          <img class="card-image" src="${imageUrl}" alt="${destination}" loading="lazy" decoding="async" referrerpolicy="no-referrer" onerror="${cardImageOnErrorAttr()}" />
           <div class="card-top">
             <h3>${destination}</h3>
             <span class="rank">#${index + 1}</span>
