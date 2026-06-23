@@ -60,7 +60,7 @@ function updateVibePreview() {
   const emoji = moodEmojis[mood] || "✈️";
 
   vibeTitle.textContent = `${emoji} ${moodLabel} ${climateLabel} Escape`;
-  vibeText.textContent = `You're signaling ${budgetLabel.toLowerCase()} energy, a ${moodLabel.toLowerCase()} mood, and you're eyeing ${regionLabel}. That's a coherent brief—we respect it.`;
+  vibeText.textContent = `You're signaling ${budgetLabel.toLowerCase()} energy, a ${moodLabel.toLowerCase()} mood, and you're eyeing ${regionLabel}. That's a coherent brief - we respect it.`;
 
   vibePreview.classList.remove("is-pulse");
   void vibePreview.offsetWidth;
@@ -499,13 +499,13 @@ function buildGentleNotes(profile, meaningfulHobby, scoredFull) {
 
   if (hobbiesTrim && meaningfulHobby.length === 0) {
     notes.push(
-      "We could not pick up hobby keywords from what you typed—try words of three letters or more (for example hiking, food, or museums). Your ranking below still uses budget, climate, mood, and any regions you added."
+      "We could not pick up hobby keywords from what you typed-try words of three letters or more (for example hiking, food, or museums). Your ranking below still uses budget, climate, mood, and any regions you added."
     );
   } else if (meaningfulHobby.length > 0) {
     const anyHobby = scoredFull.some((row) => row.scores.hobbies > 0);
     if (!anyHobby) {
       notes.push(
-        "Your hobby words did not line up with the tags in our destination list. The matches below still reflect budget, climate, mood, and regions—tweaking your interests may shuffle things."
+        "Your hobby words did not line up with the tags in our destination list. The matches below still reflect budget, climate, mood, and regions-tweaking your interests may shuffle things."
       );
     }
   }
@@ -515,7 +515,7 @@ function buildGentleNotes(profile, meaningfulHobby, scoredFull) {
     const maxR = Math.max(0, ...scoredFull.map((row) => row.scores.region));
     if (maxR === 0) {
       notes.push(
-        "We could not match the regions you typed to places in our catalog. Try broader names (for example Europe or Southeast Asia) from the home page—results here still use budget, climate, and mood."
+        "We could not match the regions you typed to places in our catalog. Try broader names (for example Europe or Southeast Asia) from the home page-results here still use budget, climate, and mood."
       );
     }
   }
@@ -641,7 +641,7 @@ function matchTier(rank, topScore, score, destination) {
       "Our hill to die on",
       "Book this first",
       "Main-character trip",
-      "Start here—seriously",
+      "Start here-seriously",
       "The one we'd fight for"
     ]);
   }
@@ -683,7 +683,7 @@ function buildHighlights(place, hobbyMatches, profile, scores) {
   if (hobbyMatches.length >= 2) {
     lines.push(
       pickVariant(seed, [
-        `${city} actually delivers on ${hobbyMatches.slice(0, 2).join(" and ")}—not brochure fluff.`,
+        `${city} actually delivers on ${hobbyMatches.slice(0, 2).join(" and ")}-not brochure fluff.`,
         `You care about ${hobbyMatches.slice(0, 2).join(" + ")}; ${city} treats that as the point, not a footnote.`,
         `${hobbyMatches.slice(0, 2).join(", ")} land here with receipts, not stock photos.`
       ])
@@ -691,7 +691,7 @@ function buildHighlights(place, hobbyMatches, profile, scores) {
   } else if (hobbyMatches.length === 1) {
     lines.push(
       pickVariant(seed, [
-        `The ${hobbyMatches[0]} scene is real—less "we have an app," more actual life.`,
+        `The ${hobbyMatches[0]} scene is real-less "we have an app," more actual life.`,
         `If ${hobbyMatches[0]} matters, ${city} isn't playing pretend.`,
         `Strong ${hobbyMatches[0]} angle without the tourist-trap autopilot.`
       ])
@@ -703,13 +703,13 @@ function buildHighlights(place, hobbyMatches, profile, scores) {
       pickVariant(seed + 3, [
         "Geography check: this is the part of the map you named.",
         "Region-wise, we're not ignoring what you typed.",
-        "You pointed at this corner of the world—we listened."
+        "You pointed at this corner of the world-we listened."
       ])
     );
   } else if (scores.region >= 3) {
     lines.push(
       pickVariant(seed + 5, [
-        "Region match is cousin-close—same family, different passport.",
+        "Region match is cousin-close-same family, different passport.",
         "Near your zone without being a literal Ctrl+F on your list."
       ])
     );
@@ -728,7 +728,7 @@ function buildHighlights(place, hobbyMatches, profile, scores) {
   if (scores.climate >= 6) {
     lines.push(
       pickVariant(seed + 9, [
-        `${climateWord} weather—what you asked for, not a bait-and-switch.`,
+        `${climateWord} weather-what you asked for, not a bait-and-switch.`,
         `Climate-wise it's aligned; pack for "${climateWord.toLowerCase()}" and mean it.`,
         "No surprise microclimate gaslighting."
       ])
@@ -738,7 +738,7 @@ function buildHighlights(place, hobbyMatches, profile, scores) {
   if (scores.mood >= 4 && lines.length < 3) {
     lines.push(
       pickVariant(seed + 13, [
-        `The "${moodWord}" brief reads intentional here—not decorative.`,
+        `The "${moodWord}" brief reads intentional here-not decorative.`,
         `${moodWord} isn't wallpaper; the place works with that mood.`,
         `If you want ${moodWord.toLowerCase()}, this isn't fighting you.`
       ])
@@ -767,14 +767,14 @@ function generateReason(place, hobbyMatches, profile, scores, rank) {
   if (rank === 0) {
     hook = pickVariant(seed, [
       `${city} is the pick we'd defend in a group chat.`,
-      `Lead with ${city}—it's putting in overtime for your "${mood}" brief.`,
+      `Lead with ${city}-it's putting in overtime for your "${mood}" brief.`,
       `${city} isn't subtle about earning the top spot.`,
       `If you only stalk flights for one place, make it ${city}.`
     ]);
   } else {
     hook = pickVariant(seed, [
       `${city} earns its spot: ${mood.toLowerCase()} travel without the template smell.`,
-      `We're into ${city} for you—${mood.toLowerCase()} energy, zero checklist coma.`,
+      `We're into ${city} for you-${mood.toLowerCase()} energy, zero checklist coma.`,
       `${city} fits the "${mood}" mood without selling you a brochure fantasy.`,
       `${city} belongs in your rotation for something that feels chosen, not assigned.`
     ]);
@@ -807,7 +807,7 @@ function generateReason(place, hobbyMatches, profile, scores, rank) {
       pickVariant(seed + 5, [
         `Why we're loud about it: ${whys.slice(0, 2).join("; ")}.`,
         `Plain English: ${whys.slice(0, 2).join(", ")}.`,
-        `The receipts: ${whys.slice(0, 2).join(" · ")}.`
+        `The receipts: ${whys.slice(0, 2).join(" | ")}.`
       ]);
   }
 
@@ -819,9 +819,9 @@ function rollRandomDestination() {
   const place = destinationCatalog[Math.floor(Math.random() * destinationCatalog.length)];
   const city = cityShort(place);
   const hooks = [
-    `${city} wins the wheel spin—sometimes admitting you had zero plan *is* the plan.`,
+    `${city} wins the wheel spin-sometimes admitting you had zero plan *is* the plan.`,
     `We closed our eyes and pointed at the map: ${city}. You're welcome.`,
-    `${city}—because analysis paralysis is not a personality trait.`,
+    `${city}-because analysis paralysis is not a personality trait.`,
     `Today's chaos pick: ${city}. Pack snacks and optimism.`,
     `${city} surfaced from pure RNG. Let fate argue with your group chat.`,
     `Globe says ${city}. The quiz wasn't consulted; we're not sorry.`,
@@ -839,7 +839,7 @@ function rollRandomDestination() {
   if (regionLabel) {
     highlights.push(
       pickVariant(seed, [
-        `Atlas pin: ${regionLabel}—still counts as "somewhere in the world."`,
+        `Atlas pin: ${regionLabel}-still counts as "somewhere in the world."`,
         `Corner of the planet: ${regionLabel}. Passport sticker incoming.`,
         `Region file: ${regionLabel}. Broad enough to brag, specific enough to Google.`
       ])
@@ -850,21 +850,21 @@ function rollRandomDestination() {
       pickVariant(seed + 2, [
         `Flavor notes: ${place.tags.slice(0, 3).join(", ")}.`,
         `You'll find ${place.tags.slice(0, 3).join(", ")} doing actual work here.`,
-        `Trip résumé keywords: ${place.tags.slice(0, 3).join(", ")}.`
+        `Trip resume keywords: ${place.tags.slice(0, 3).join(", ")}.`
       ])
     );
   }
   if (moodBits) {
     highlights.push(
       pickVariant(seed + 4, [
-        `Typical vibes lean ${moodBits.toLowerCase()}—your mileage may gloriously vary.`,
-        `People usually chase a ${moodBits.toLowerCase()} mood—steal or subvert it.`,
-        `Mood menu includes ${moodBits.toLowerCase()}—pick your subplot.`
+        `Typical vibes lean ${moodBits.toLowerCase()}-your mileage may gloriously vary.`,
+        `People usually chase a ${moodBits.toLowerCase()} mood-steal or subvert it.`,
+        `Mood menu includes ${moodBits.toLowerCase()}-pick your subplot.`
       ])
     );
   }
   if (!highlights.length) {
-    highlights.push("Random doesn't mean boring—it means you finally picked.");
+    highlights.push("Random doesn't mean boring-it means you finally picked.");
   }
 
   const tier = pickVariant(seed + 8, [
@@ -930,8 +930,19 @@ function generateRecommendations(profile) {
   return { destinations, gentleNotes };
 }
 
+if (!form) {
+  console.error("Pick My Place: #vacay-form not found - matcher cannot start.");
+} else {
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
+
+  if (!form.checkValidity()) {
+    setStatus(
+      "Please fill in hobbies and choose budget, climate, and mood - all four are required."
+    );
+    form.reportValidity();
+    return;
+  }
 
   const profile = {
     hobbies: form.hobbies.value.trim(),
@@ -941,7 +952,7 @@ form.addEventListener("submit", async (event) => {
     regions: form.regions.value.trim()
   };
 
-  submitBtn.disabled = true;
+  if (submitBtn) submitBtn.disabled = true;
   setStatus("Finding your best destination matches...");
 
   try {
@@ -953,18 +964,18 @@ form.addEventListener("submit", async (event) => {
     console.error(error);
     setStatus("Could not generate recommendations. Please try again.");
   } finally {
-    submitBtn.disabled = false;
+    if (submitBtn) submitBtn.disabled = false;
   }
 });
 
 randomBtn?.addEventListener("click", () => {
   randomBtn.disabled = true;
   if (submitBtn) submitBtn.disabled = true;
-  setStatus("Spinning the globe…");
+  setStatus("Spinning the globe...");
   try {
     const pick = rollRandomDestination();
     saveResults([pick], null, { source: "random" });
-    setStatus("Here's your wild card. Opening results…");
+    setStatus("Here's your wild card. Opening results...");
     window.location.href = "results.html";
   } catch (error) {
     console.error(error);
@@ -979,3 +990,4 @@ randomBtn?.addEventListener("click", () => {
 });
 
 updateVibePreview();
+}

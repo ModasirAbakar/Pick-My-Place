@@ -94,7 +94,7 @@ function appendDestinationBlock(lines, item, index) {
   if (item.reason) lines.push(`  ${item.reason}`);
   const highlights = Array.isArray(item.highlights) ? item.highlights : [];
   highlights.forEach((h) => {
-    lines.push(`  â€¢ ${h}`);
+    lines.push(`  - ${h}`);
   });
 }
 
@@ -105,7 +105,7 @@ function buildCopyText() {
   if (!rows.length && !picks.length) return "";
 
   const lines = [];
-  lines.push("Pick My Place â€” results");
+  lines.push("Pick My Place - results");
   lines.push("");
 
   if (meta?.source === "random") {
@@ -135,7 +135,7 @@ function buildCopyText() {
       appendDestinationBlock(lines, item, index);
     });
   } else if (picks.length) {
-    lines.push("(No current ranked list on this page â€” saved picks only.)");
+    lines.push("(No current ranked list on this page - saved picks only.)");
   }
 
   if (picks.length) {
@@ -212,7 +212,7 @@ function renderPrefSummary(meta) {
   if (meta.source === "random") {
     prefSummary.hidden = false;
     prefSummary.textContent =
-      "Serendipity mode â€” one random destination from our world catalog (your quiz wasn't used). Hit \"Surprise me\" on the home page to spin again.";
+      "Serendipity mode - one random destination from our world catalog (your quiz wasn't used). Hit \"Surprise me\" on the home page to spin again.";
     return;
   }
   if (!meta.preferences) {
@@ -232,7 +232,7 @@ function renderPrefSummary(meta) {
     return;
   }
   prefSummary.hidden = false;
-  prefSummary.textContent = `Based on your choices â€” ${parts.join(" Â· ")}`;
+  prefSummary.textContent = `Based on your choices: ${parts.join(" | ")}`;
 }
 
 function renderGentleNotes(meta) {
@@ -259,7 +259,7 @@ function applyResultsPageTheme(meta) {
   }
   if (resultsHeroTagline) {
     resultsHeroTagline.textContent = isRandom
-      ? "One surprise destinationâ€”picked at random from places around the world in our list."
+      ? "One surprise destination - picked at random from places around the world in our list."
       : "Here are your ranked destination matches, tuned to what you selected.";
   }
 }
@@ -363,8 +363,8 @@ function renderSavedPicks() {
         </div>
         <p class="saved-picks-empty-title">Your shortlist is ready when you are</p>
         <p class="saved-picks-empty-text">
-          Tap <strong>Save this pick</strong> on any destination below. Saved places stay hereâ€”even if you clear your
-          latest ranked runâ€”so you can compare favorites without starting over.
+          Tap <strong>Save this pick</strong> on any destination below. Saved places stay here even if you clear your
+          latest ranked run, so you can compare favorites without starting over.
         </p>
         <a class="action-link saved-picks-empty-cta" href="#results">Jump to ranked matches</a>
       </div>`;
@@ -399,7 +399,7 @@ function renderResults(destinations) {
               .join("")}</ul>`
           : "";
       const saved = isPickSaved(item.destination);
-      const btnLabel = saved ? "Saved âœ“" : "Save this pick";
+      const btnLabel = saved ? "Saved" : "Save this pick";
       const pressed = saved ? "true" : "false";
       const btnClass = saved ? "save-pick-btn is-saved" : "save-pick-btn";
 
@@ -431,7 +431,7 @@ function updateSaveButtonStates() {
     const btn = resultsEl.querySelector(`[data-save-index="${index}"]`);
     if (!btn) return;
     const saved = isPickSaved(item.destination);
-    btn.textContent = saved ? "Saved âœ“" : "Save this pick";
+    btn.textContent = saved ? "Saved" : "Save this pick";
     btn.classList.toggle("is-saved", saved);
     btn.setAttribute("aria-pressed", saved ? "true" : "false");
   });
@@ -514,7 +514,7 @@ if (saved && saved.length > 0) {
     );
   }
 } else {
-  setStatus(loadPicks().length ? "No latest run â€” your saved picks are below." : "No saved results yet.");
+  setStatus(loadPicks().length ? "No latest run - your saved picks are below." : "No saved results yet.");
 }
 
 updateCopyButtonState();
