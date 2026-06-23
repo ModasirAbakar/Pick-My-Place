@@ -464,7 +464,7 @@ savedPicksGrid?.addEventListener("click", (event) => {
   setStatus(count ? `${count} saved pick${count === 1 ? "" : "s"} remaining.` : "Saved picks cleared from this list.");
 });
 
-clearBtn.addEventListener("click", () => {
+clearBtn?.addEventListener("click", () => {
   localStorage.removeItem(STORAGE_KEY);
   localStorage.removeItem(META_KEY);
   renderResults(null);
